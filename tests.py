@@ -120,5 +120,26 @@ class TestAll(unittest.TestCase):
         self.generic(tests)
 
 
+    def test_remove(self):
+        tests = [
+            {
+                'coinsValue': self.coinsValue,
+                'originalWallet': Decimal("%.15g" % 12),
+                'finalWallet': Decimal("%.15g" % 5.7)
+            },
+            {
+                'coinsValue': self.coinsValue,
+                'originalWallet': Decimal("%.15g" % 26.7),
+                'finalWallet': Decimal("%.15g" % 0.1)
+            },
+            {
+                'coinsValue': self.coinsValue,
+                'originalWallet': Decimal("%.15g" % 5.5),
+                'finalWallet': Decimal("%.15g" % 5.4)
+            },
+        ]
+        self.generic(tests)
+
+
 if __name__ == '__main__':
     unittest.main()

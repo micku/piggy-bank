@@ -55,13 +55,16 @@ def get_actions(values, original, final):
 
 def iterate(values, original, final, content=None):
     diff = final - original
-    biggest_number = None
+    nearest_number = None
+
     if diff > 0:
-        biggest_number = next(x for x in values if x <= diff)
+        nearest_number = next(x for x in values if x <= diff)
     else:
-        biggest_number = next(-x for x in content if x <= abs(diff))
-    original += biggest_number
-    yield biggest_number
+        nearest_number = -min(content, key=lambda x:abs(x+diff))
+        content.remove(abs(nearest_number))
+    yield nearest_number
+
+    original += nearest_number
     if original != final:
         for action in iterate(values, original, final, content):
             yield action
