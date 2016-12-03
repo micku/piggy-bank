@@ -141,5 +141,28 @@ class TestAll(unittest.TestCase):
         self.generic(tests)
 
 
+    def test_big_numbers(self):
+        for i in range(1000000):
+            tests = [
+                {
+                    'coinsValue': self.coinsValue,
+                    'originalWallet': Decimal("%.15g" % 4389.2),
+                    'finalWallet': Decimal("%.15g" % 20877.7)
+                },
+                {
+                    'coinsValue': self.coinsValue,
+                    'originalWallet': Decimal("%.15g" % 4839),
+                    'finalWallet': Decimal("%.15g" % 84.7)
+                },
+                {
+                    'coinsValue': self.coinsValue,
+                    'originalWallet': Decimal("%.15g" % 38840.1),
+                    'finalWallet': Decimal("%.15g" % 34442.7)
+                },
+            ]
+        self.generic(tests)
+
+
+
 if __name__ == '__main__':
     unittest.main()
