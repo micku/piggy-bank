@@ -20,7 +20,7 @@ class TestAll(unittest.TestCase):
     def execute_instructions(self,
             original,
             instructions):
-        for action in instructions['actions']:
+        for action in instructions:
             original += action['value'] if action['action'] == 'add' else -action['value']
         return original
 

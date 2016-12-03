@@ -19,10 +19,13 @@ class DecimalEncoder(json.JSONEncoder):
 def run(f):
     dat = json.loads(f.read())
     click.echo(json.dumps(
-        get_actions(
-            dat['coinsValue'],
-            dat['originalWallet'],
-            dat['finalWallet']),
+        { 'actions': [
+            value for value in
+            get_actions(
+                dat['coinsValue'],
+                dat['originalWallet'],
+                dat['finalWallet']
+            )]},
         cls=DecimalEncoder))
 
 
@@ -32,6 +35,7 @@ def get_actions(values, original, final):
         for v in values
         ], reverse=True)
     content = None
+
     if original > 0:
         content = [
             x for x in
@@ -40,17 +44,14 @@ def get_actions(values, original, final):
                 Decimal("%.15g" % original))
         ]
 
-    return { 'actions': [
-        {
-            'action': 'add' if value > 0 else 'remove',
-            'value': abs(value)
-        }
-        for value in
-        iterate(sorted_values,
+    for value in iterate(sorted_values,
             Decimal("%.15g" % original),
             Decimal("%.15g" % final),
-            content)
-    ]}
+            content):
+        yield {
+                'action': 'add' if value > 0 else 'remove',
+                'value': abs(value)
+            }
 
 
 def iterate(values, original, final, content=None):
