@@ -78,5 +78,26 @@ class TestAll(unittest.TestCase):
         self.generic(tests)
 
 
+    def test_sum(self):
+        tests = [
+            {
+                'coinsValue': self.coinsValue,
+                'originalWallet': Decimal("%.15g" % 12),
+                'finalWallet': Decimal("%.15g" % 27)
+            },
+            {
+                'coinsValue': self.coinsValue,
+                'originalWallet': Decimal("%.15g" % 26.7),
+                'finalWallet': Decimal("%.15g" % 99)
+            },
+            {
+                'coinsValue': self.coinsValue,
+                'originalWallet': Decimal("%.15g" % 5.5),
+                'finalWallet': Decimal("%.15g" % 32.8)
+            },
+        ]
+        self.generic(tests)
+
+
 if __name__ == '__main__':
     unittest.main()
