@@ -78,7 +78,7 @@ class TestAll(unittest.TestCase):
         self.generic(tests)
 
 
-    def test_sum(self):
+    def test_add(self):
         tests = [
             {
                 'coinsValue': self.coinsValue,
@@ -94,6 +94,27 @@ class TestAll(unittest.TestCase):
                 'coinsValue': self.coinsValue,
                 'originalWallet': Decimal("%.15g" % 5.5),
                 'finalWallet': Decimal("%.15g" % 32.8)
+            },
+        ]
+        self.generic(tests)
+
+
+    def test_remove_to_zero(self):
+        tests = [
+            {
+                'coinsValue': self.coinsValue,
+                'originalWallet': Decimal("%.15g" % 12),
+                'finalWallet': Decimal("%.15g" % 0)
+            },
+            {
+                'coinsValue': self.coinsValue,
+                'originalWallet': Decimal("%.15g" % 26.7),
+                'finalWallet': Decimal("%.15g" % 0)
+            },
+            {
+                'coinsValue': self.coinsValue,
+                'originalWallet': Decimal("%.15g" % 5.5),
+                'finalWallet': Decimal("%.15g" % 0)
             },
         ]
         self.generic(tests)

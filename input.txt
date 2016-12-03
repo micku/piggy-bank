@@ -7,7 +7,7 @@
         5,
         0.1
     ],
-    "originalWallet": 0,
-    "finalWallet": 32.8
+    "originalWallet": 27.5,
+    "finalWallet": 9
 }
 
