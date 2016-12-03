@@ -1,0 +1,13 @@
+{
+    "coinsValue": [
+        100,
+        10,
+        0.5,
+        1,
+        5,
+        0.1
+    ],
+    "originalWallet": 0,
+    "finalWallet": 32.8
+}
+
